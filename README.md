@@ -157,3 +157,4 @@ setup-log-2026-03-16_10-30-00.txt
 - **Admin privileges** are needed for some installs and registry changes
 - Update `git_config` in `config.json` with your name/email before running
 - Some changes (dark mode, registry tweaks) require a **restart** to fully apply
+
