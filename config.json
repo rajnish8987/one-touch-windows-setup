@@ -1,0 +1,458 @@
+﻿{
+  "metadata": {
+    "name": "My Windows Setup",
+    "description": "One-touch setup configuration for a fresh Windows machine",
+    "version": "1.0.0",
+    "author": "Your Name"
+  },
+  "winget_apps": {
+    "browsers": [
+      {
+        "id": "Google.Chrome",
+        "name": "Google Chrome",
+        "enabled": false
+      },
+      {
+        "id": "Mozilla.Firefox",
+        "name": "Firefox",
+        "enabled": true
+      },
+      {
+        "id": "BraveSoftware.BraveBrowser",
+        "name": "Brave Browser",
+        "enabled": false
+      },
+      {
+        "id": "Opera Browser",
+        "name": "Opera Browser",
+        "enabled": false
+      }
+    ],
+    "development": [
+      {
+        "id": "Microsoft.VisualStudioCode",
+        "name": "VS Code",
+        "enabled": false
+      },
+      {
+        "id": "Git.Git",
+        "name": "Git",
+        "enabled": false
+      },
+      {
+        "id": "GitHub.GitHubDesktop",
+        "name": "GitHub Desktop",
+        "enabled": false
+      },
+      {
+        "id": "OpenJS.NodeJS.LTS",
+        "name": "Node.js LTS",
+        "enabled": false
+      },
+      {
+        "id": "Python.Python.3.12",
+        "name": "Python 3.12",
+        "enabled": false
+      },
+      {
+        "id": "Microsoft.WindowsTerminal",
+        "name": "Windows Terminal",
+        "enabled": false
+      },
+      {
+        "id": "Microsoft.PowerShell",
+        "name": "PowerShell 7",
+        "enabled": false
+      },
+      {
+        "id": "Docker.DockerDesktop",
+        "name": "Docker Desktop",
+        "enabled": false
+      },
+      {
+        "id": "Postman.Postman",
+        "name": "Postman",
+        "enabled": false
+      },
+      {
+        "id": "JetBrains.IntelliJIDEA.Community",
+        "name": "IntelliJ IDEA Community",
+        "enabled": false
+      },
+      {
+        "id": "Oracle.JavaRuntimeEnvironment",
+        "name": "Java JRE",
+        "enabled": false
+      },
+      {
+        "id": "Notepad++.Notepad++",
+        "name": "Notepad++",
+        "enabled": false
+      }
+    ],
+    "utilities": [
+      {
+        "id": "7zip.7zip",
+        "name": "7-Zip",
+        "enabled": false
+      },
+      {
+        "id": "RARLab.WinRAR",
+        "name": "WinRAR",
+        "enabled": false
+      },
+      {
+        "id": "voidtools.Everything",
+        "name": "Everything Search",
+        "enabled": true
+      },
+      {
+        "id": "Microsoft.PowerToys",
+        "name": "PowerToys",
+        "enabled": false
+      },
+      {
+        "id": "ShareX.ShareX",
+        "name": "ShareX (Screenshot)",
+        "enabled": false
+      },
+      {
+        "id": "Bitwarden.Bitwarden",
+        "name": "Bitwarden",
+        "enabled": false
+      },
+      {
+        "id": "AntibodySoftware.WizTree",
+        "name": "WizTree (Disk Analyzer)",
+        "enabled": false
+      },
+      {
+        "id": "AutoHotkey.AutoHotkey",
+        "name": "AutoHotkey",
+        "enabled": false
+      }
+    ],
+    "media": [
+      {
+        "id": "VideoLAN.VLC",
+        "name": "VLC Media Player",
+        "enabled": false
+      },
+      {
+        "id": "Spotify.Spotify",
+        "name": "Spotify",
+        "enabled": false
+      },
+      {
+        "id": "OBSProject.OBSStudio",
+        "name": "OBS Studio",
+        "enabled": false
+      },
+      {
+        "id": "HandBrake.HandBrake",
+        "name": "HandBrake",
+        "enabled": false
+      },
+      {
+        "id": "GIMP.GIMP",
+        "name": "GIMP",
+        "enabled": false
+      },
+      {
+        "id": "Audacity.Audacity",
+        "name": "Audacity",
+        "enabled": false
+      }
+    ],
+    "communication": [
+      {
+        "id": "Discord.Discord",
+        "name": "Discord",
+        "enabled": false
+      },
+      {
+        "id": "Zoom.Zoom",
+        "name": "Zoom",
+        "enabled": false
+      },
+      {
+        "id": "SlackTechnologies.Slack",
+        "name": "Slack",
+        "enabled": false
+      },
+      {
+        "id": "Telegram.TelegramDesktop",
+        "name": "Telegram",
+        "enabled": false
+      },
+      {
+        "id": "Microsoft.Teams",
+        "name": "Microsoft Teams",
+        "enabled": false
+      }
+    ],
+    "productivity": [
+      {
+        "id": "Notion.Notion",
+        "name": "Notion",
+        "enabled": false
+      },
+      {
+        "id": "Obsidian.Obsidian",
+        "name": "Obsidian",
+        "enabled": false
+      },
+      {
+        "id": "Adobe.Acrobat.Reader.64-bit",
+        "name": "Adobe Acrobat Reader",
+        "enabled": false
+      }
+    ],
+    "cloud_storage": [
+      {
+        "id": "Google.GoogleDrive",
+        "name": "Google Drive",
+        "enabled": false
+      },
+      {
+        "id": "Dropbox.Dropbox",
+        "name": "Dropbox",
+        "enabled": false
+      }
+    ],
+    "gaming": [
+      {
+        "id": "Valve.Steam",
+        "name": "Steam",
+        "enabled": false
+      },
+      {
+        "id": "EpicGames.EpicGamesLauncher",
+        "name": "Epic Games Launcher",
+        "enabled": false
+      }
+    ]
+  },
+  "choco_apps": [
+    {
+      "name": "adb",
+      "description": "Android Debug Bridge",
+      "enabled": false
+    },
+    {
+      "name": "wget",
+      "description": "GNU Wget",
+      "enabled": false
+    },
+    {
+      "name": "curl",
+      "description": "cURL",
+      "enabled": false
+    },
+    {
+      "name": "ffmpeg",
+      "description": "FFmpeg",
+      "enabled": false
+    },
+    {
+      "name": "yt-dlp",
+      "description": "YouTube Downloader",
+      "enabled": false
+    }
+  ],
+  "npm_global": [
+    {
+      "name": "typescript",
+      "description": "TypeScript Compiler"
+    },
+    {
+      "name": "ts-node",
+      "description": "TypeScript Execution"
+    },
+    {
+      "name": "nodemon",
+      "description": "Auto-restart Node apps"
+    },
+    {
+      "name": "prettier",
+      "description": "Code Formatter"
+    },
+    {
+      "name": "eslint",
+      "description": "JS/TS Linter"
+    },
+    {
+      "name": "live-server",
+      "description": "Local Dev Server"
+    },
+    {
+      "name": "npm-check-updates",
+      "description": "Update npm deps"
+    },
+    {
+      "name": "create-react-app",
+      "description": "React App Scaffolding"
+    }
+  ],
+  "pip_packages": [
+    {
+      "name": "requests",
+      "description": "HTTP Library"
+    },
+    {
+      "name": "flask",
+      "description": "Web Framework"
+    },
+    {
+      "name": "django",
+      "description": "Web Framework"
+    },
+    {
+      "name": "jupyter",
+      "description": "Jupyter Notebooks"
+    },
+    {
+      "name": "pandas",
+      "description": "Data Analysis"
+    },
+    {
+      "name": "numpy",
+      "description": "Numerical Computing"
+    },
+    {
+      "name": "matplotlib",
+      "description": "Plotting"
+    },
+    {
+      "name": "virtualenv",
+      "description": "Virtual Environments"
+    },
+    {
+      "name": "black",
+      "description": "Code Formatter"
+    },
+    {
+      "name": "pylint",
+      "description": "Linter"
+    },
+    {
+      "name": "UV",
+      "description": "Ultra Fast"
+    }
+  ],
+  "vscode_extensions": [
+    {
+      "id": "ms-python.python",
+      "name": "Python"
+    },
+    {
+      "id": "ms-python.vscode-pylance",
+      "name": "Pylance"
+    },
+    {
+      "id": "dbaeumer.vscode-eslint",
+      "name": "ESLint"
+    },
+    {
+      "id": "esbenp.prettier-vscode",
+      "name": "Prettier"
+    },
+    {
+      "id": "eamodio.gitlens",
+      "name": "GitLens"
+    },
+    {
+      "id": "ms-vscode.powershell",
+      "name": "PowerShell"
+    },
+    {
+      "id": "formulahendry.auto-rename-tag",
+      "name": "Auto Rename Tag"
+    },
+    {
+      "id": "ritwickdey.LiveServer",
+      "name": "Live Server"
+    },
+    {
+      "id": "PKief.material-icon-theme",
+      "name": "Material Icon Theme"
+    },
+    {
+      "id": "zhuangtongfa.Material-theme",
+      "name": "One Dark Pro"
+    },
+    {
+      "id": "ms-azuretools.vscode-docker",
+      "name": "Docker"
+    },
+    {
+      "id": "GitHub.copilot",
+      "name": "GitHub Copilot"
+    },
+    {
+      "id": "ms-vscode-remote.remote-wsl",
+      "name": "WSL"
+    },
+    {
+      "id": "bradlc.vscode-tailwindcss",
+      "name": "Tailwind CSS IntelliSense"
+    },
+    {
+      "id": "christian-kohler.path-intellisense",
+      "name": "Path IntelliSense"
+    }
+  ],
+  "fonts": [
+    {
+      "id": "JetBrains.Mono",
+      "source": "winget",
+      "name": "JetBrains Mono"
+    },
+    {
+      "name": "firacode",
+      "source": "choco",
+      "description": "Fira Code"
+    },
+    {
+      "name": "cascadiacode",
+      "source": "choco",
+      "description": "Cascadia Code"
+    }
+  ],
+  "windows_settings": {
+    "explorer": {
+      "show_file_extensions": true,
+      "show_hidden_files": true,
+      "show_full_path_in_title": true,
+      "open_to_this_pc": true,
+      "disable_recent_files_in_quick_access": false
+    },
+    "taskbar": {
+      "hide_search_box": false,
+      "hide_task_view_button": false,
+      "hide_widgets": true,
+      "hide_chat": true,
+      "small_taskbar_icons": false
+    },
+    "system": {
+      "dark_mode": true,
+      "disable_startup_delay": true,
+      "enable_developer_mode": true,
+      "disable_bing_search_in_start_menu": true,
+      "set_power_plan_high_performance": true
+    },
+    "privacy": {
+      "disable_telemetry": true,
+      "disable_activity_history": true,
+      "disable_advertising_id": true
+    }
+  },
+  "git_config": {
+    "user_name": "Rajnish Singh",
+    "user_email": "rajnish8987@gmail.com",
+    "default_branch": "main",
+    "credential_helper": "manager",
+    "core_autocrlf": "true",
+    "core_editor": "code --wait"
+  }
+}

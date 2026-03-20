@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Touch Windows Setup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">&#9889;</span>
+                <span class="logo-text">OneTouch Windows Setup</span>
+            </div>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-item active" data-page="dashboard">
+                <span class="nav-icon">&#9776;</span>
+                <span>Dashboard</span>
+            </li>
+            <li class="nav-item" data-page="apps">
+                <span class="nav-icon">&#128230;</span>
+                <span>Apps</span>
+            </li>
+            <li class="nav-item" data-page="devtools">
+                <span class="nav-icon">&#128295;</span>
+                <span>Dev Tools</span>
+            </li>
+            <li class="nav-item" data-page="settings">
+                <span class="nav-icon">&#9881;</span>
+                <span>Settings</span>
+            </li>
+            <li class="nav-item" data-page="run">
+                <span class="nav-icon">&#9654;</span>
+                <span>Run Setup</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <h1 class="page-title" id="pageTitle">Dashboard</h1>
+            <div class="topbar-actions">
+                <button class="btn btn-outline" id="btnSave" onclick="saveConfig()">
+                    <span>&#128190;</span> Save Config
+                </button>
+            </div>
+        </header>
+
+        <!-- Page: Dashboard -->
+        <div class="page active" id="page-dashboard">
+            <div class="stats-grid">
+                <div class="stat-card" style="--accent: #6366f1">
+                    <div class="stat-number" id="statTotalApps">0</div>
+                    <div class="stat-label">Total Apps</div>
+                </div>
+                <div class="stat-card" style="--accent: #10b981">
+                    <div class="stat-number" id="statEnabled">0</div>
+                    <div class="stat-label">Enabled</div>
+                </div>
+                <div class="stat-card" style="--accent: #f59e0b">
+                    <div class="stat-number" id="statCategories">0</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-card" style="--accent: #ec4899">
+                    <div class="stat-number" id="statExtensions">0</div>
+                    <div class="stat-label">VS Code Ext.</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Quick Actions</h2>
+                </div>
+                <div class="quick-actions">
+                    <button class="btn btn-outline" onclick="exportConfig()">&#128229; Export Config</button>
+                    <button class="btn btn-outline" onclick="importConfig()">&#128228; Import Config</button>
+                    <button class="btn btn-outline" onclick="backupMachineState()">&#128190; Backup Machine State</button>
+                    <button class="btn btn-outline" onclick="scanInstalledApps()">&#128270; Scan Installed Apps</button>
+                    <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="handleImportFile(event)">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Quick Overview</h2>
+                <div class="category-overview" id="categoryOverview"></div>
+            </div>
+        </div>
+
+        <!-- Page: Apps -->
+        <div class="page" id="page-apps">
+            <div class="page-toolbar">
+                <input type="text" class="search-input" id="appSearch" placeholder="Search apps..." oninput="filterApps()">
+                <button class="btn btn-outline" onclick="scanInstalledApps()">&#128270; Scan Installed</button>
+                <button class="btn btn-outline" onclick="showAddCategoryModal()">&#128193; New Category</button>
+                <button class="btn btn-primary" onclick="showAddAppModal()">
+                    <span>+</span> Add App
+                </button>
+            </div>
+            <div class="apps-container" id="appsContainer"></div>
+        </div>
+
+        <!-- Page: Dev Tools -->
+        <div class="page" id="page-devtools">
+            <div class="devtools-grid">
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">npm Global Packages</h2>
+                        <button class="btn btn-sm btn-primary" onclick="showAddItemModal('npm')">+ Add</button>
+                    </div>
+                    <div class="item-list" id="npmList"></div>
+                </div>
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">pip Packages</h2>
+                        <button class="btn btn-sm btn-primary" onclick="showAddItemModal('pip')">+ Add</button>
+                    </div>
+                    <div class="item-list" id="pipList"></div>
+                </div>
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">VS Code Extensions</h2>
+                        <button class="btn btn-sm btn-primary" onclick="showAddItemModal('vscode')">+ Add</button>
+                    </div>
+                    <div class="item-list" id="vscodeList"></div>
+                </div>
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Fonts</h2>
+                        <button class="btn btn-sm btn-primary" onclick="showAddItemModal('font')">+ Add</button>
+                    </div>
+                    <div class="item-list" id="fontList"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page: Settings -->
+        <div class="page" id="page-settings">
+            <div class="settings-grid">
+                <div class="section">
+                    <h2 class="section-title">Explorer</h2>
+                    <div id="explorerSettings" class="settings-list"></div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Taskbar</h2>
+                    <div id="taskbarSettings" class="settings-list"></div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">System</h2>
+                    <div id="systemSettings" class="settings-list"></div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Privacy</h2>
+                    <div id="privacySettings" class="settings-list"></div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Git Configuration</h2>
+                    <div id="gitSettings" class="settings-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page: Run Setup -->
+        <div class="page" id="page-run">
+            <div class="run-container">
+                <div class="run-card">
+                    <h2>Run Setup</h2>
+                    <p class="run-desc">Launch the setup script with your current configuration.</p>
+
+                    <div class="run-options">
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="optDryRun">
+                            <div>
+                                <strong>Dry Run</strong>
+                                <small>Preview what would happen without installing</small>
+                            </div>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="optForceReinstall">
+                            <div>
+                                <strong>Force Reinstall</strong>
+                                <small>Reinstall apps even if already present</small>
+                            </div>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="optSkipApps">
+                            <div>
+                                <strong>Skip Apps</strong>
+                                <small>Only apply settings, skip app installs</small>
+                            </div>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="optSkipSettings">
+                            <div>
+                                <strong>Skip Settings</strong>
+                                <small>Only install apps, skip Windows settings</small>
+                            </div>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="optSkipDevTools">
+                            <div>
+                                <strong>Skip Dev Tools</strong>
+                                <small>Skip npm/pip/VS Code extensions</small>
+                            </div>
+                        </label>
+                    </div>
+
+                    <button class="btn btn-run" id="btnRun" onclick="runSetup()">
+                        &#9654; Run Setup
+                    </button>
+
+                    <div class="run-status" id="runStatus" style="display:none">
+                        <div class="status-indicator" id="statusIndicator">
+                            <div class="spinner"></div>
+                            <span id="statusText">Running...</span>
+                        </div>
+                        <pre class="log-output" id="logOutput"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add App Modal -->
+    <div class="modal-overlay" id="addAppModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add New App</h3>
+                <button class="modal-close" onclick="closeModal('addAppModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="modalCategory" class="form-input"></select>
+                </div>
+                <div class="form-group">
+                    <label>Search Winget</label>
+                    <input type="text" id="wingetSearchInput" class="form-input" placeholder="Type to search winget..." oninput="debounceWingetSearch()">
+                    <div class="winget-results" id="wingetResults"></div>
+                </div>
+                <div class="form-group">
+                    <label>Winget ID</label>
+                    <input type="text" id="modalAppId" class="form-input" placeholder="e.g. Google.Chrome">
+                </div>
+                <div class="form-group">
+                    <label>Display Name</label>
+                    <input type="text" id="modalAppName" class="form-input" placeholder="e.g. Google Chrome">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('addAppModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="addApp()">Add App</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Dev Tool Item Modal -->
+    <div class="modal-overlay" id="addItemModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="itemModalTitle">Add Item</h3>
+                <button class="modal-close" onclick="closeModal('addItemModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label id="itemModalIdLabel">Name/ID</label>
+                    <input type="text" id="itemModalId" class="form-input" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" id="itemModalDesc" class="form-input" placeholder="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('addItemModal')">Cancel</button>
+                <button class="btn btn-primary" id="itemModalAddBtn" onclick="addItem()">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Category Modal -->
+    <div class="modal-overlay" id="addCategoryModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>New Category</h3>
+                <button class="modal-close" onclick="closeModal('addCategoryModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Category Name</label>
+                    <input type="text" id="newCategoryName" class="form-input" placeholder="e.g. security_tools">
+                    <small class="form-hint">Use lowercase with underscores (e.g. <code>my_category</code>)</small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('addCategoryModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="addCategory()">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rename Category Modal -->
+    <div class="modal-overlay" id="renameCategoryModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Rename Category</h3>
+                <button class="modal-close" onclick="closeModal('renameCategoryModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>New Name</label>
+                    <input type="text" id="renameCategoryInput" class="form-input" placeholder="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('renameCategoryModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="renameCategory()">Rename</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

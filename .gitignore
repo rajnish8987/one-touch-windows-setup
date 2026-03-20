@@ -1,0 +1,15 @@
+# Log files
+logs/
+*.log
+
+# Temp files
+*.tmp
+_run_setup.ps1
+_uninstall.ps1
+_uninstall_log.txt
+temp/
+
+# OS generated
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
