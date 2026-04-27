@@ -10,20 +10,20 @@
       {
         "id": "Google.Chrome",
         "name": "Google Chrome",
-        "enabled": false
+        "enabled": true
       },
       {
         "id": "Mozilla.Firefox",
         "name": "Firefox",
-        "enabled": true
+        "enabled": false
       },
       {
         "id": "BraveSoftware.BraveBrowser",
         "name": "Brave Browser",
-        "enabled": false
+        "enabled": true
       },
       {
-        "id": "Opera Browser",
+        "id": "Opera.Opera",
         "name": "Opera Browser",
         "enabled": false
       }
